@@ -13,3 +13,6 @@ The only real nuance to using the image is that port 5901 must be open.
 ```bash
 docker run -d -ti -p 5901:5901 ubuntu-vnc
 ```
+
+## Security
+The built image is designed to be run for the non-root user `dev`.  If you have reason to worry about attacks between your VNC client and the server, an SSH tunneling scheme of some kind is the standard way to lock things down.
