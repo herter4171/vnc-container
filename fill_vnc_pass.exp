@@ -1,0 +1,22 @@
+#!/usr/bin/expect -f
+
+# Launch vncpasswd
+spawn /usr/bin/vncpasswd
+
+# Feed in password arg from bash
+set VNC_PASS [lindex $argv 0];
+
+# Enter password once
+expect "Password:"
+send -- "$VNC_PASS\r"
+
+# Enter it again
+expect "Verify:"
+send -- "$VNC_PASS\r"
+
+# Decline a view-only password
+expect "Would you like to enter a view-only password (y/n)?"
+send -- "n\r"
+
+# Done setting password
+expect eof
